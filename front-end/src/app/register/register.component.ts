@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         console.log('Response from register......',res);
         this.router.navigate(['login']);
       }, err => {
-        //console.log('Response from register......',err.error);
+        console.log('Err Response from register......',err);
         this.isUsernameValid = true;
       })
     }

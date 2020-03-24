@@ -1,29 +1,27 @@
 import { LoginService } from './../services/login.service';
 import { DialogComponent } from './../dialog/dialog.component';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, DoCheck } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, DoCheck {
 
   resumeFile: File | null;
   rawData: string;
   isLoggedin;
+  check;
   
-  constructor(public dialog: MatDialog, private loginService: LoginService) { }
+  constructor(private router: Router, public dialog: MatDialog, private loginService: LoginService) { }
 
   ngOnInit() {
     this.check = sessionStorage.getItem("res-session");
     console.log('check in nav bar.....', this.check);
-    if(this.check != undefined) { 
-      this.isLoggedin = true;
-    } else { 
-      this.isLoggedin = false;
-    }
+    
     
     this.loginService.loggedIn(this.isLoggedin);
     
@@ -39,4 +37,12 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  ngDoCheck() {
+    if(this.check != undefined) { 
+      this.isLoggedin = true;
+    } else { 
+      this.isLoggedin = false;
+      this.router.navigate['/login'];
+    }
+  }
 }

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.loginForm.value).subscribe( res => {
         console.log('Success dashboard', res);
         if(res) {
-          sessionStorage.setItem('res-session', res.token);
+          sessionStorage.setItem('res-session', JSON.stringify(res));
           this.router.navigate(['dashboard']);
         }
       }, err => {

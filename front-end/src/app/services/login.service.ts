@@ -9,7 +9,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { } 
 
-  private userLoggedin = new BehaviorSubject<boolean>('');
+  private userLoggedin = new BehaviorSubject<boolean>(false);
   update = this.userLoggedin.asObservable();
 
   loggedIn(value){

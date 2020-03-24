@@ -2,6 +2,7 @@
     width: 400px;
     margin: 16px auto;
     font-size: 16px;
+    background-image:url('/assets/bg1.jpg') no-repeat center;
   }
   
   .login-header,
@@ -29,8 +30,9 @@
   }
   
   .login-container {
-    background: #ebebeb;
+    background: url('/assets/bg3.jpg') no-repeat center;
     padding: 12px;
+    min-height: 380px;
   }
   
   .login p {
@@ -79,4 +81,22 @@
 .has-error input[type="password"] {
     border-color: rgb(216, 12, 12);
     color: rgb(230, 14, 14);
+}
+
+.main {
+  margin-top: 15px;
+  border-radius: 10px 135px 10px 135px;;
+  background-color: #5d4ef3;
+  background: url('/assets/bg4.jpeg') no-repeat center;
+  height: 500px;
+}
+
+.login-main-container {
+  margin-top: 15px;
+  height: auto;
+}
+
+.heading-left {
+  margin-top: 15px;
+  color: whitesmoke;
 }

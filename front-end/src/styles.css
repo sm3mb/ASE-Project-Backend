@@ -1,6 +1,6 @@
   body {
     width: 100%;
-    background-image: url('./assets/bg3.jpg'); 
+    background-image: url('/assets/bg3.jpg'); 
     height: auto;
     background-repeat: no-repeat;
 }
