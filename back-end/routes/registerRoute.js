@@ -14,7 +14,8 @@ app.post("/", async (req, res) => {
   registerModel.findOne( { $or:[ {username: req.body.username}, {email: req.body.email}]} ).then(user => {
     if (user) {
       console.log('userNae exists', user);
-      res.send("UserName already exists");
+      res.status(500).json("UserName already exists");
+      //res.send("UserName already exists");
     } else {
       bcrypt.genSalt(10, (err, salt) =>
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -30,7 +31,8 @@ app.post("/", async (req, res) => {
         // });
 //          res.send("User registered");
           newUser.save();
-          res.send(req.body.username);
+         // res.send(req.body.username);
+          res.status(200).json(req.body.username);
         })
       );
 

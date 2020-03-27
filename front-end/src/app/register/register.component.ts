@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     if(this.registrationForm.invalid){
       return;
     } else {
-      this.registerService.saveUser(this.registrationForm.value).subscribe(res => {
+      this.registerService.saveUser(this.registrationForm.value).subscribe( res => {
         console.log('Response from register......',res);
         this.router.navigate(['login']);
       }, err => {
