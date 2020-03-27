@@ -1,6 +1,7 @@
+import { UploadService } from './../services/upload.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType} from '@angular/common/http';
+// import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType} from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -16,7 +17,7 @@ export class DialogComponent implements OnInit {
   uploadSuccess;
   resumeData;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private formBuilder: FormBuilder, private uploadService: UploadService, public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
@@ -35,14 +36,22 @@ export class DialogComponent implements OnInit {
     const formData = new FormData();
     formData.append('profile', this.uploadForm.get('profile').value);
 
-    this.http.post<any>('http://localhost:3000/uploadfile', formData).subscribe(
-      (res) => {
-        
+    this.uploadService.uploadResume(formData).subscribe(
+      (res) => { 
         this.resumeData = JSON.stringify(res);
         console.log('response data........', this.resumeData);
       },
       (err) => console.log(err)
     );
+
+    // this.http.post<any>('http://localhost:3000/uploadfile', formData).subscribe(
+    //   (res) => {
+        
+    //     this.resumeData = JSON.stringify(res);
+    //     console.log('response data........', this.resumeData);
+    //   },
+    //   (err) => console.log(err)
+    // );
   }
 
   uploadFiles(files: File) {
@@ -56,19 +65,19 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  uploadAndProgress(files: File[]){
-    console.log(files)
-    var formData = new FormData();
-    Array.from(files).forEach(f => formData.append('file',f))
+  // uploadAndProgress(files: File[]){
+  //   console.log(files)
+  //   var formData = new FormData();
+  //   Array.from(files).forEach(f => formData.append('file',f))
     
-    this.http.post('https://file.io', formData, {reportProgress: true, observe: 'events'})
-      .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.percentDone = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          console.log('event..........', event);
-          this.uploadSuccess = true;
-        }
-    });
-  }
+  //   this.http.post('https://file.io', formData, {reportProgress: true, observe: 'events'})
+  //     .subscribe(event => {
+  //       if (event.type === HttpEventType.UploadProgress) {
+  //         this.percentDone = Math.round(100 * event.loaded / event.total);
+  //       } else if (event instanceof HttpResponse) {
+  //         console.log('event..........', event);
+  //         this.uploadSuccess = true;
+  //       }
+  //   });
+  // }
 }

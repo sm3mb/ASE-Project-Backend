@@ -17,6 +17,7 @@ var app = express();
 //   });
 
 router.post("", (req, res) => {
+  console.log('hitting in login@@@@@@');
   passport.authenticate("local", function(err, user, info) {
     var token;
 

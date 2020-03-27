@@ -1,23 +1,26 @@
+import { JobsService } from './../services/jobs.service';
 import { LoginService } from './../services/login.service';
 import { DialogComponent } from './../dialog/dialog.component';
-import { Component, OnInit, Inject, DoCheck } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, DoCheck {
+export class DashboardComponent implements OnInit {
   loginForm: FormGroup;
   resumeFile: File | null;
   rawData: string;
   isLoggedin;
   check;
+  jobsData;
   
-  constructor(private formBuilder: FormBuilder, private router: Router, public dialog: MatDialog, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, public dialog: MatDialog, private loginService: LoginService, private jobsService : JobsService) { }
 
   ngOnInit() {
     this.loginForm  =  this.formBuilder.group({
@@ -41,6 +44,10 @@ export class DashboardComponent implements OnInit, DoCheck {
       this.rawData = result;
     });
 
+    this.jobsService.getJobs().subscribe(res => {
+      console.log('jobs............', res);
+      this.jobsData = res;
+    })
   }
 
   findJobs(){
@@ -48,13 +55,20 @@ export class DashboardComponent implements OnInit, DoCheck {
 
   }
 
-  
-  ngDoCheck() {
-    if(this.check != undefined) { 
-      this.isLoggedin = true;
-    } else { 
-      this.isLoggedin = false;
-      this.router.navigate['/login'];
-    }
+  getDescription(link) {
+    this.jobsService.getJobDescription(link).subscribe(res => {
+      console.log('jobs............', res);
+      //this.jobsD = res;
+    })
   }
+
+  
+  // ngDoCheck() {
+  //   if(this.check != undefined) { 
+  //     this.isLoggedin = true;
+  //   } else { 
+  //     this.isLoggedin = false;
+  //     this.router.navigate['/login'];
+  //   }
+  // }
 }

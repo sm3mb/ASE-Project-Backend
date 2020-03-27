@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { ngfModule, ngf } from "angular-file";
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ngfModule, ngf } from "angular-file";
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ngfModule
+    ngfModule,
+    MatCardModule
   ],
   entryComponents: [DialogComponent],
   providers: [

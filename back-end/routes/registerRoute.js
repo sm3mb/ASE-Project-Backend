@@ -13,6 +13,7 @@ app.post("/", async (req, res) => {
 
   registerModel.findOne( { $or:[ {username: req.body.username}, {email: req.body.email}]} ).then(user => {
     if (user) {
+      console.log('userNae exists', user);
       res.send("UserName already exists");
     } else {
       bcrypt.genSalt(10, (err, salt) =>
