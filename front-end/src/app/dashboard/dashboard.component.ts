@@ -33,7 +33,16 @@ export class DashboardComponent implements OnInit {
     
     
     this.loginService.loggedIn(this.isLoggedin);
-    
+  
+
+    this.jobsService.getJobs().subscribe(res => {
+      console.log('jobs............', res);
+      this.jobsData = res;
+    })
+  }
+
+  upload(){
+
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
       data: { data: this.resumeFile}
@@ -43,16 +52,6 @@ export class DashboardComponent implements OnInit {
       // console.log('The dialog was closed...........',result);
       this.rawData = result;
     });
-
-    this.jobsService.getJobs().subscribe(res => {
-      console.log('jobs............', res);
-      this.jobsData = res;
-    })
-  }
-
-  findJobs(){
-
-
   }
 
   getDescription(link) {
