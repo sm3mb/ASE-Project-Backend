@@ -107,7 +107,9 @@ app.post('/uploadfile', upload.single('profile'), (req, res, next) => {
     }
     //console.log(res)
     var docxResult = res;
-    var words = ['Angular','Node','Html','Css','Java', 'script','HTML','CSS','Bootstrap','Java Script','.net','java','Big Data','React','php','python','pl/sql','R','Spark','Software Engineer','Blockchain','Cloud Computing'];
+    var words = ['Angular','Node','Html','Css','Java', 'script','HTML','CSS','Bootstrap','Java Script','JS','Mulesoft','python','dell boomi','aws','informatica','java','unix','batch','script','powershell','REST','SOAP','oracle','SQL Server','salesforce','ERP','snowflake','MYSQL','Tableau',
+  '.net','microsoft','framework','Jenkins','hadoop','spark'];
+
     var resultWords = [];
     var splitwords = docxResult.split(' ');
     // console.log('words.......', sp); 
