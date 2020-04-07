@@ -107,7 +107,7 @@ app.post('/uploadfile', upload.single('profile'), (req, res, next) => {
     }
     //console.log(res)
     var docxResult = res;
-    var words = ['Angular','Node','Html','Css','Java', 'script','HTML','CSS','Bootstrap','Java Script'];
+    var words = ['Angular','Node','Html','Css','Java', 'script','HTML','CSS','Bootstrap','Java Script','.net','java','Big Data','React','php','python','pl/sql','R','Spark','Software Engineer','Blockchain','Cloud Computing'];
     var resultWords = [];
     var splitwords = docxResult.split(' ');
     // console.log('words.......', sp); 
