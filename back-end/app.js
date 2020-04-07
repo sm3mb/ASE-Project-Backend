@@ -47,7 +47,7 @@ mongoose.connect(config.MongoUri, {useNewUrlParser: true})
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log('disk storage!!!!!!!!!!', file)
+    console.log('disk storage!!!!!!!!!!', req, file)
     cb(null, 'uploads')
   },
   filename: function (req, file, cb) {
@@ -86,6 +86,7 @@ app.use('/jobs', jobsRouter);
 
 
 app.post('/uploadfile', upload.single('profile'), (req, res, next) => {
+  console.log('file request body@@@@@@@@@@@###########', req.body);
   const file = req.file;
   // path.extname('index.html');
   // let filepath = fs.readFileSync(req.file.path);
@@ -121,8 +122,9 @@ app.post('/uploadfile', upload.single('profile'), (req, res, next) => {
     //   'technologies' : resultWords
     // })
     // testNew.save();
+    // console.log('req@@####$$$$$%%%%%%',req.body,req.body.userId);
     const resumeKeywords = new technologiesModel({
-      'userid' : null,
+      'userid' : req.body.userId,
       'technologies' : resultWords
     });
 

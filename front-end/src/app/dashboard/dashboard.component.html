@@ -13,18 +13,18 @@
 <div class="row">
   <div class="login-sec">
     <h2 class="text-center">Find Jobs</h2>
-    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="findJobs()">
+    <form [formGroup]="jobsForm" class="login-form" (ngSubmit)="findJobs()">
       <div class="row col-md-12">
         <div class="col-md-5">
           <div class="form-group">
             <label for="what" class="text-uppercase">What</label>
-            <input type="text" class="form-control" formControlName="username" placeholder="Job title, Keywords or Company">
+            <input type="text" class="form-control" formControlName="jobKeywords" placeholder="Job title, Keywords or Company">
           </div>
         </div>
         <div class="col-md-5">
           <div class="form-group">
             <label for="where" class="text-uppercase">Where</label>
-            <input type="password" formControlName="password" class="form-control" placeholder="Kansas City, MO">
+            <input type="text" formControlName="location" class="form-control" placeholder="Kansas City, MO">
     
           </div>
         </div>
@@ -47,22 +47,10 @@
 
 <h5 align="center"><a [routerLink]="" (click)="upload()">Post Your Resume</a> - It only takes few seconds</h5>
 
-<h2 align="center">Jobs</h2>
-
-<div class="row">
-  <div class="col-md-8">
-    <mat-card class="example-card" *ngFor="let job of jobsData">
-      <mat-card-header (click)="getDescription(job.link)">
-        <!-- <mat-icon>more_vert</mat-icon>
-          <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title>{{job.name}}</mat-card-title>
-        <mat-card-subtitle>{{job.company}} &nbsp; {{job.rating}}</mat-card-subtitle>
-        <mat-card-subtitle>{{job.location}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>{{job.summary}}</mat-card-content>
-    </mat-card>
-  </div>
+<div>
+  <app-jobs [formValue]="jobsFormValue"></app-jobs>
 </div>
+
 
 
 

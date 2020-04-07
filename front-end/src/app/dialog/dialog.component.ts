@@ -34,15 +34,18 @@ export class DialogComponent implements OnInit {
 
   onSubmit() {
     const formData = new FormData();
+    let userId = sessionStorage.getItem("res-session");
+    
+    formData.append('userId', JSON.parse(userId).token);
     formData.append('profile', this.uploadForm.get('profile').value);
 
-    this.uploadService.uploadResume(formData).subscribe(
-      (res) => { 
+    this.uploadService.uploadResume(formData).subscribe(res => { 
         this.resumeData = JSON.stringify(res);
         console.log('response data........', this.resumeData);
-      },
-      (err) => console.log(err)
-    );
+      },err => {
+        this.resumeData = JSON.stringify(err);
+        console.log('error data........',err);
+      });
 
     // this.http.post<any>('http://localhost:3000/uploadfile', formData).subscribe(
     //   (res) => {

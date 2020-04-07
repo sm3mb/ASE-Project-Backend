@@ -17,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { ngfModule, ngf } from "angular-file";
 import {MatCardModule} from '@angular/material/card';
+import { JobsComponent } from './jobs/jobs.component';
+import { JobDescriptionComponent } from './job-description/job-description.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatCardModule} from '@angular/material/card';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    DialogComponent
+    DialogComponent,
+    JobsComponent,
+    JobDescriptionComponent
   ],
   imports: [
     BrowserModule,

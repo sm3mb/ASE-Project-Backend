@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 const ResumeSchema = new mongoose.Schema({
   userid: {
-    type: String,
-    trim: true,
-    lowercase: true
+    type: Schema.Types.ObjectId, 
+    ref: 'user-register',
+    unique: true
   },
   technologies: {
     type: Array,
