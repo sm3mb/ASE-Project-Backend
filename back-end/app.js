@@ -107,7 +107,7 @@ app.post('/uploadfile', upload.single('profile'), (req, res, next) => {
     }
     //console.log(res)
     var docxResult = res;
-    var words = ['Angular','Node','Html','Css','Java', 'script','HTML','CSS','Bootstrap','Java Script'];
+    var words = ['Angular','Node','Html','Css','Java', 'script','HTML','CSS','Bootstrap','Java Script','JS','Mulesoft','python','dell boomi','aws','informatica','java','unix','batch','script','powershell','REST','SOAP','oracle','SQL Server','salesforce','ERP','snowflake','MYSQL','Tableau'];
     var resultWords = [];
     var splitwords = docxResult.split(' ');
     // console.log('words.......', sp); 
