@@ -1,1 +1,16 @@
-<p>job-description works!</p>
+<div mat-dialog-title>
+    <div>{{jobData.name}}</div>
+    <div>{{jobData.company}}&nbsp; {{jobData.rating}}</div>
+    <div>{{jobData.location}}</div>
+    <div>
+        <button class="btn btn-success"><a href={{jobData.link}} target="_blank">Apply</a></button>
+    </div>
+</div>
+<div mat-dialog-content>
+    <div *ngIf="jobData">
+        <div [innerHTML]="jobData.description"></div>
+    </div>
+</div>
+<mat-dialog-actions align="right">
+	<button class="btn btn-success" mat-dialog-close tabindex="-1">Close</button>
+</mat-dialog-actions>

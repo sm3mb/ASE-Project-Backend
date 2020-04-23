@@ -85,6 +85,7 @@ router.post("/description", async (req, res) => {
 
 router.post("/custom", async (req, res) => {
   //console.log('custo url here....', req.body.url);
+  //req.body.url = 'https://www.indeed.com/jobs?q=full+stack+developer&l=New+York%2C+NY';
   request(
     req.body.url,
     (error, response, html) => {
@@ -115,10 +116,17 @@ router.post("/custom", async (req, res) => {
             .text()
             .trim();
           let link = $(el)
+            .find(".title")
             .find("a")
             .attr('href');
           let linkPrefix = 'https://www.indeed.com' + link;
-          // console.log('link prefix@@@@@@@@@', linkPrefix);
+          // console.log('link prefix@@@@@@@@@', linkPrefix); viewJobButtonLinkContainer
+          // if(jobTitle == 'Software Engineer' && companyName == 'Capital One') {
+          //   console.log('link prefix@@@@@@@@@', applyLink);
+          // }
+          // if(applyLink == null || applyLink == undefined){
+          //   applyLink = linkPrefix;
+          // }
           let one = {
             name: jobTitle,
             company: companyName,

@@ -1,6 +1,8 @@
+import { JobDescriptionComponent } from './../job-description/job-description.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { JobsService } from './../services/jobs.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-jobs',
@@ -16,7 +18,7 @@ export class JobsComponent implements OnInit {
   url;
   @Input('formValue') formValue: any;
 
-  constructor(private jobsService : JobsService, private router: Router) { }
+  constructor(private jobsService : JobsService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     let id = sessionStorage.getItem("res-session");
@@ -72,11 +74,26 @@ export class JobsComponent implements OnInit {
     })
   }
 
-  getDescription(link) {
-    console.log('job link @@@@@@@@@', link);
-    this.jobsService.getJobDescription(link).subscribe( res => {
+  getDescription(job) {
+    console.log('job job @@@@@@@@@', job.link);
+    this.jobsService.getJobDescription(job.link).subscribe( res => {
       this.jobDescription = res;
-      console.log('jobs............', this.jobDescription);
+      console.log('jobs data............', this.jobsData);
+      job['description'] = this.jobDescription
+      // let presentJobData = {
+      //   jobData: job,
+      //   description: this.jobDescription
+      // }
+
+      let dialogRef = this.dialog.open(JobDescriptionComponent, {
+        width: '600vw',
+        height: '500vw',
+        data: job
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('after closed jobs data............', this.jobsData);
+      });
     })
   }
 

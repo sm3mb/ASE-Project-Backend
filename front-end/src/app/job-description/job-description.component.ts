@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { VERSION, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-job-description',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobDescriptionComponent implements OnInit {
 
-  constructor() { }
+  jobData;
+
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any,private dialogRef: MatDialogRef<AlertDialogComponent>) { 
+    console.log('dialog data.......',data);
+    if (data) {
+      this.jobData = data ;
+    }
+    //this.dialogRef.updateSize('300vw','300vw');
+  }
 
   ngOnInit() {
   }
