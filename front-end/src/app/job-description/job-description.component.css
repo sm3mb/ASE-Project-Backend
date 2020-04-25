@@ -1,0 +1,12 @@
+.btn-login{background: #DE6262; color:#fff; font-weight:600;}
+
+a {
+    color:white; 
+    /* text-decoration: none; */
+    background-color: transparent;
+}
+.close-button{
+    float: right;
+    top:-24px;
+    right:-24px;
+  }

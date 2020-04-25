@@ -86,8 +86,9 @@ export class JobsComponent implements OnInit {
       // }
 
       let dialogRef = this.dialog.open(JobDescriptionComponent, {
-        width: '600vw',
-        height: '500vw',
+        panelClass: 'my-class',
+        height: '500px',
+        width: '1000px',
         data: job
       });
 
