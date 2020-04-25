@@ -19,6 +19,7 @@ import { ngfModule, ngf } from "angular-file";
 import {MatCardModule} from '@angular/material/card';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobDescriptionComponent } from './job-description/job-description.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
     BrowserAnimationsModule,
     MatDialogModule,
     ngfModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+
   ],
   entryComponents: [DialogComponent],
   providers: [
