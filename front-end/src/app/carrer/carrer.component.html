@@ -32,12 +32,12 @@
     </mat-tab>
     <mat-tab label="Companies"> 
         <div class="row">
-            <!-- <div class="col-md-8" *ngFor="let company of topCompanies">
-                <div *ngFor="let item of company">
-                    {{item}}
+            <div *ngFor="let key of keeys; let i=index">
+                {{key}}
+                <div *ngFor="let v of Values[i]">
+                    {{v}}
                 </div>
-            </div> -->
-            Companies
+            </div>
         </div>
     </mat-tab>
 </mat-tab-group>
