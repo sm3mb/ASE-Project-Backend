@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CarrerComponent } from './carrer/carrer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
     DashboardComponent,
     DialogComponent,
     JobsComponent,
-    JobDescriptionComponent
+    JobDescriptionComponent,
+    CarrerComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +45,9 @@ import { MatIconModule } from '@angular/material/icon';
     ngfModule,
     MatCardModule,
     MatIconModule,
-
+    MatTabsModule
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, JobDescriptionComponent],
   providers: [
     LoginService,
     RegisterService,

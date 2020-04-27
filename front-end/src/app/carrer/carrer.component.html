@@ -1,0 +1,61 @@
+<mat-tab-group>
+    <mat-tab label="Openings"> 
+        <div class="row">
+            <div class="col-md-4" *ngFor="let carrer of carrerOpenings">
+                <mat-card>
+                    <div mat-dialog-title>
+                      <div>{{carrer.jobTitle}}</div>
+                      <div>{{carrer.openings}}</div>
+                      <div>{{carrer.average}}&nbsp;{{carrer.salary}}&nbsp;{{carrer.period}}</div>
+                      <div>Location: {{carrer.location}}</div>
+                      <div>
+                        <button class="btn btn-login"><a href={{carrer.jobsLink}} target="_blank">Apply</a></button>
+                      </div>
+                    </div>
+                  </mat-card>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Salaries"> 
+        <div class="row">
+            <div class="col-md-8" *ngFor="let salary of topSalaries">
+                <mat-card (click)="openSalaryLink(salary.link)">
+                    <div mat-dialog-title>
+                        <div class="row">
+                            <div class="col-md-6">{{salary.companyName}}</div>
+                            <div class="col-md-6">{{salary.salary}} per year </div>
+                        </div>
+                    </div>
+                  </mat-card>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Companies"> 
+        <div class="row">
+            <!-- <div class="col-md-8" *ngFor="let company of topCompanies">
+                <div *ngFor="let item of company">
+                    {{item}}
+                </div>
+            </div> -->
+            Companies
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+
+
+<!-- <div mat-dialog-content>
+  <div *ngIf="carrerOpenings">
+    <div [innerHTML]="carrerOpenings.description"></div>
+  </div>
+</div> -->
+
+<!-- 
+average: "Average salary"
+jobTitle: "Full Stack Developer"
+jobsLink: "https://www.indeed.com/jobs?q=full+stack+developer&l=United+States&from=career"
+location: "United States"
+openings: "12146 openings"
+period: "per year"
+salary: "$113,465" 
+-->

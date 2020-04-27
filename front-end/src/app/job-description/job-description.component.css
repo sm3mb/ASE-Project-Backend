@@ -1,12 +1,20 @@
-.btn-login{background: #DE6262; color:#fff; font-weight:600;}
+.btn-login {
+  background: #de6262;
+  color: #fff;
+  font-weight: 600;
+}
 
 a {
-    color:white; 
-    /* text-decoration: none; */
-    background-color: transparent;
+  color: white;
+  /* text-decoration: none; */
+  background-color: transparent;
 }
-.close-button{
+.close-button {
+  float: right;
+  top: -24px;
+  right: -24px;
+}
+
+.close-icon {
     float: right;
-    top:-24px;
-    right:-24px;
   }

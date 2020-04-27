@@ -16,7 +16,7 @@ export class JobsComponent implements OnInit {
   jobDescription;
   resumeTechnologies;
   url;
-  @Input('formValue') formValue: any;
+  //@Input('formValue') formValue: any;
 
   constructor(private jobsService : JobsService, private router: Router, public dialog: MatDialog) { }
 

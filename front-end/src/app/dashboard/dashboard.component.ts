@@ -1,15 +1,15 @@
-import { JobsService } from './../services/jobs.service';
-import { LoginService } from './../services/login.service';
-import { DialogComponent } from './../dialog/dialog.component';
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
+import { JobsService } from "./../services/jobs.service";
+import { LoginService } from "./../services/login.service";
+import { DialogComponent } from "./../dialog/dialog.component";
+import { Component, OnInit, Inject } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
   jobsForm: FormGroup;
@@ -19,16 +19,23 @@ export class DashboardComponent implements OnInit {
   check;
   jobsFormValue;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, public dialog: MatDialog, private loginService: LoginService, private jobsService: JobsService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public dialog: MatDialog,
+    private loginService: LoginService,
+    private jobsService: JobsService
+  ) {}
 
   ngOnInit() {
-    this.jobsForm  =  this.formBuilder.group({
-      jobKeywords: ['', [Validators.required]],
-    //  email: ['', [Validators.required, Validators.email]],
-    location: ['', [Validators.required]],
-  });
+    console.log('window location...........',window.location.pathname);
+    this.jobsForm = this.formBuilder.group({
+      jobKeywords: ["", [Validators.required]],
+      //  email: ['', [Validators.required, Validators.email]],
+      location: ["", [Validators.required]]
+    });
     this.check = sessionStorage.getItem("res-session");
-    console.log('check in nav bar.....', this.check);
+    console.log("check in nav bar.....", this.check);
     this.loginService.loggedIn(this.isLoggedin);
   }
 
@@ -38,31 +45,30 @@ export class DashboardComponent implements OnInit {
     this.jobsService.updateFormData(this.jobsFormValue);
   }
 
-  upload(){
-
+  upload() {
     let dialogRef = this.dialog.open(DialogComponent, {
-      width: '400px',
-      data: { data: this.resumeFile}
+      width: "400px",
+      data: { data: this.resumeFile }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed...........',result);
       this.rawData = result;
     });
-    
   }
 
-  logOut(){
+  logOut() {
     this.loginService.logOut();
   }
 
-  
+  carrer() {
+    this.router.navigate(["dashboard/carrer"]);
+  }
 
-  
   // ngDoCheck() {
-  //   if(this.check != undefined) { 
+  //   if(this.check != undefined) {
   //     this.isLoggedin = true;
-  //   } else { 
+  //   } else {
   //     this.isLoggedin = false;
   //     this.router.navigate['/login'];
   //   }

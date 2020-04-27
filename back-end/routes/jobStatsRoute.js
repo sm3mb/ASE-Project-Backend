@@ -77,7 +77,7 @@ router.get("/stats", async (req, res) => {
   
   })
 
-  router.get("/topcompanies", async (req, res) => {
+  router.get("/topsalaries", async (req, res) => {
     //console.log('job desc %%%%%%%%%%%%', req.body.link);
     
     var defaultUrl = 'https://www.indeed.com/career/software-engineer/salaries';
@@ -88,20 +88,83 @@ router.get("/stats", async (req, res) => {
           const $ = cheerio.load(html);
 
           var companyList = [];
-          $(".ranked-list__list").each((i, el) => {
+          $(".top-paying-companies-list")
+          .find(".ranked-list__item").each((i, el) => {
             let companyName = $(el)
               .find(".ranked-list__item-title-text")
-              .html();
-            let companyReview = $(el)
-              .find(".ranked-list__item-title-content")
-              .html();
+              .text();
+            let salary = $(el)
+              .find(".ranked-list__item-subtitle-text")
+              .text();
+            let link = $(el)
+              .find(".ranked-list__icon")
+              .find("a")
+              .attr('href');
+      
             let one = {
                 companyName: companyName,
-                companyReview: companyReview
+                salary: salary,
+                link: link
             };
-            console.log('each logs###$$$$$$$', one);
+
+            //console.log('each logs###$$$$$$$', one);
             companyList.push(one);
           });
+  
+          res.status(200).json(companyList);
+        } else {
+          res.status(500).json("Error in fetching companies list.");
+        }
+      }
+    );
+  
+  })
+
+  // 
+
+  router.get("/topcompanies", async (req, res) => {
+    //console.log('job desc %%%%%%%%%%%%', req.body.link);
+    
+    var defaultUrl = 'https://www.indeed.com/career/software-engineer/companies';
+    
+    request(defaultUrl,
+      (error, response, html) => {
+        if (!error && response.statusCode == 200) {
+          const $ = cheerio.load(html);
+
+          var companyList = {};
+          $(".companies__content").find(".ranked-list.top-rated__ranking-item").each((i, el) => {
+
+            var listHeader = $(el).find(".ranked-list__header-text").text();
+            //console.log('each Header name########',listHeader);
+            companyList[listHeader] = [];
+            $(el).find(".ranked-list__item").each((j, item) => {
+              let companyName = $(item).find(".ranked-list__item-title-text.top-rated__title").text();
+              //console.log('each companyName name########',companyName);
+              companyList[listHeader].push(companyName);
+            })
+            // let companyName = $(el)
+            //   .find(".ranked-list__item-title-text")
+            //   .text();
+            // let salary = $(el)
+            //   .find(".ranked-list__item-subtitle-text")
+            //   .text();
+            // let link = $(el)
+            //   .find(".ranked-list__icon")
+            //   .find("a")
+            //   .attr('href');
+      
+            // let one = {
+            //     companyName: companyName,
+            //     salary: salary,
+            //     link: link
+            // };
+
+            // //console.log('each logs###$$$$$$$', one);
+            // companyList.push(one);
+          });
+
+          //top = $('.ranked-list__list').html()
   
           res.status(200).json(companyList);
         } else {
