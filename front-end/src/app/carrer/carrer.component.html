@@ -1,45 +1,58 @@
 <mat-tab-group>
-    <mat-tab label="Openings"> 
-        <div class="row">
-            <div class="col-md-4" *ngFor="let carrer of carrerOpenings">
-                <mat-card>
-                    <div mat-dialog-title>
-                      <div>{{carrer.jobTitle}}</div>
-                      <div>{{carrer.openings}}</div>
-                      <div>{{carrer.average}}&nbsp;{{carrer.salary}}&nbsp;{{carrer.period}}</div>
-                      <div>Location: {{carrer.location}}</div>
-                      <div>
-                        <button class="btn btn-login"><a href={{carrer.jobsLink}} target="_blank">Apply</a></button>
-                      </div>
-                    </div>
-                  </mat-card>
+  <mat-tab label="Openings">
+    <div class="tabHeading">
+      <h3>Top Companies for Software Engineers in {{searchValue}}</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let carrer of carrerOpenings">
+        <mat-card>
+          <div mat-dialog-title>
+            <div>{{carrer.jobTitle}}</div>
+            <div>{{carrer.openings}}</div>
+            <div>{{carrer.average}}&nbsp;{{carrer.salary}}&nbsp;{{carrer.period}}</div>
+            <div>Location: {{carrer.location}}</div>
+            <div>
+              <button class="btn btn-login"><a href={{carrer.jobsLink}} target="_blank">Apply</a></button>
             </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Salaries"> 
-        <div class="row">
-            <div class="col-md-8" *ngFor="let salary of topSalaries">
-                <mat-card (click)="openSalaryLink(salary.link)">
-                    <div mat-dialog-title>
-                        <div class="row">
-                            <div class="col-md-6">{{salary.companyName}}</div>
-                            <div class="col-md-6">{{salary.salary}} per year </div>
-                        </div>
-                    </div>
-                  </mat-card>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Salaries">
+    <div class="tabHeading">
+      <h3>Top Paid Companies for Software Engineers in {{searchValue}}</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-12" *ngFor="let salary of topSalaries;let i = index;">
+        <mat-card (click)="openSalaryLink(salary.link)">
+          <div mat-dialog-title>
+            <div class="row">
+              <div class="col-md-2">{{i+1}}</div>
+              <div class="col-md-5">{{salary.companyName}}</div>
+              <div class="col-md-5">{{salary.salary}} per year </div>
             </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Companies"> 
-        <div class="row">
-            <div *ngFor="let key of keeys; let i=index">
-                {{key}}
-                <div *ngFor="let v of Values[i]">
-                    {{v}}
-                </div>
-            </div>
-        </div>
-    </mat-tab>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Companies">
+    <div class="tabHeading">
+      <h3>Top Companies for Software Engineers in {{searchValue}}</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let key of keeys; let i=index">
+        <mat-card>
+          <div mat-dialog-title class="headbgColor">{{key}}</div>
+          <div *ngFor="let v of Values[i]">
+            <div mat-dialog-content>{{v}}</div>
+          </div>
+        </mat-card>
+      </div>
+
+    </div>
+  </mat-tab>
 </mat-tab-group>
 
 

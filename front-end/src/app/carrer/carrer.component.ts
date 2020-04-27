@@ -14,26 +14,37 @@ export class CarrerComponent implements OnInit {
   topSalaries;
   Values;
   keeys;
+  searchValue;
+
   constructor(private carrerService: CarrerService) { }
 
   ngOnInit() {
 
-    this.carrerService.getCarrersData().subscribe( res => {
-      this.carrerOpenings = res;
-      //console.log('This is carrers data.......', res);
+    this.carrerService.updatedcarrerSearchValue.subscribe(res => {
+      console.log("This is value in carrer component.........", res);
+      this.searchValue = res;
+      this.getCarrersData();
     });
 
-    this.carrerService.getTopCompanies().subscribe( res => {
+  }
+
+  getCarrersData() {
+    this.carrerService.getCarrersData(this.searchValue).subscribe( res => {
+      this.carrerOpenings = res;
+      console.log('This is carrers data.......', res);
+    });
+
+    this.carrerService.getTopCompanies(this.searchValue).subscribe( res => {
       this.topCompanies = res;
+      console.log('This is Top companies data.......', res);
       this.keeys = Object.keys(this.topCompanies);
       this.Values = Object.values(this.topCompanies);
   });
 
-    this.carrerService.getTopSalaries().subscribe( res => {
+    this.carrerService.getTopSalaries(this.searchValue).subscribe( res => {
       this.topSalaries = res;
-      //console.log('This is Top salaries data.......', res);
+      console.log('This is Top salaries data.......', res);
     });
-
   }
 
   openSalaryLink(url) {

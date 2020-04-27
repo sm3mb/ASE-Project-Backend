@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
 } 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } .mat-tab-body-content */ 
 
 @import '~material-design-icons/iconfont/material-icons.css';
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -32,3 +32,10 @@ padding : 50px 0;
 .banner-text h2{color:#fff; font-weight:600;}
 .banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
 .banner-text p{color:#fff;}
+
+.mat-tab-body-content{overflow:hidden !important;}
+
+.mat-card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

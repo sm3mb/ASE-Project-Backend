@@ -3,16 +3,16 @@
     <img src="./assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Enterprise Trajectory
   </a>
-  
+
   <div class="form-inline">
     <!-- <a href="https://www.indeed.com/jobs?q=developer&l=New%20York%2C%20NY&from=career&vjk=5e4e67b8fc22b2c0" target="_blank">Click Here</a> -->
     <button (click)="carrer()" class="btn btn-login float-right">Carrer Advice</button> &nbsp;
     <button (click)="logOut()" class="btn btn-login float-right">Log out</button> &nbsp;
- </div>
+  </div>
 </nav>
 
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="!formType">
     <div class="login-sec">
       <h2 class="text-center">Find Jobs</h2>
       <form [formGroup]="jobsForm" class="login-form" (ngSubmit)="findJobs()">
@@ -20,35 +20,56 @@
           <div class="col-md-5">
             <div class="form-group">
               <label for="what" class="text-uppercase">What</label>
-              <input type="text" class="form-control" formControlName="jobKeywords" placeholder="Job title, Keywords or Company">
+              <input type="text" class="form-control" formControlName="jobKeywords"
+                placeholder="Job title, Keywords or Company">
             </div>
           </div>
           <div class="col-md-5">
             <div class="form-group">
               <label for="where" class="text-uppercase">Where</label>
               <input type="text" formControlName="location" class="form-control" placeholder="Kansas City, MO">
-      
+
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-check">
               <label class="form-check-label">
                 <!-- <input type="checkbox" class="form-check-input"> -->
-               
+
               </label>
               <button type="submit" class="btn btn-login float-right">Find</button>
             </div>
           </div>
         </div>
       </form>
-  
-  
+
+
     </div>
-  
+
   </div>
-  
-  <h5 align="center"><a [routerLink]="" (click)="upload()">Post Your Resume</a> - It only takes few seconds</h5>
-  
+
+  <h5 *ngIf="!formType" align="center"><a [routerLink]="" (click)="upload()">Post Your Resume</a> - It only takes few
+    seconds</h5>
+
+  <div class="row" *ngIf="formType">
+    <div class="login-sec">
+      <h2 class="text-center">Explore career information by location</h2>
+      <div class="col-md-8">
+        <div class="form-group">
+          <!-- <label for="where" class="text-uppercase">Explore career information by location</label> -->
+          <input type="text" #carrerLocation class="form-control" placeholder="United States">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group"> 
+          <button type="submit" (click)="searchCarrer(carrerLocation.value)" class="btn btn-login float-right">Search</button>
+        </div>
+      </div>
+    </div>
+      
+    
+  </div>
+
   <div>
     <!-- <app-jobs></app-jobs> -->
     <router-outlet></router-outlet>

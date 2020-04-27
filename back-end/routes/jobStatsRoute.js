@@ -4,10 +4,10 @@ var router = express.Router();
 const request = require("request");
 const cheerio = require("cheerio");
 
-router.get("/stats", async (req, res) => {
-    //console.log('job desc %%%%%%%%%%%%', req.body.link);
+router.post("/stats", async (req, res) => {
+    //console.log('job desc %%%%%%%%%%%%', req.body.data);
     
-    var defaultUrl = 'https://www.indeed.com/career/software-engineer';
+    var defaultUrl = 'https://www.indeed.com/career/software-engineer/' + req.body.data;
     //var defaultUrl = 'https://www.indeed.com/career/software-engineer/New-York--NY';
     // var defaultUrl = 'https://www.indeed.com/jobs?q=full+stack+developer&l=United+States&from=career';
 
@@ -64,7 +64,7 @@ router.get("/stats", async (req, res) => {
                 period: period, 
                 jobsLink: jobsLink
             };
-            console.log('each logs###$$$$$$$', one);
+            //console.log('each logs###$$$$$$$', one);
             statsData.push(one);
           });
   
@@ -77,10 +77,10 @@ router.get("/stats", async (req, res) => {
   
   })
 
-  router.get("/topsalaries", async (req, res) => {
-    //console.log('job desc %%%%%%%%%%%%', req.body.link);
+  router.post("/topsalaries", async (req, res) => {
+    //console.log('job desc %%%%%%%%%%%%', req.body);
     
-    var defaultUrl = 'https://www.indeed.com/career/software-engineer/salaries';
+    var defaultUrl = 'https://www.indeed.com/career/software-engineer/salaries/' + req.body.data;
     
     request(defaultUrl,
       (error, response, html) => {
@@ -122,10 +122,10 @@ router.get("/stats", async (req, res) => {
 
   // 
 
-  router.get("/topcompanies", async (req, res) => {
-    //console.log('job desc %%%%%%%%%%%%', req.body.link);
+  router.post("/topcompanies", async (req, res) => {
+    console.log('job desc %%%%%%%%%%%%', req.body);
     
-    var defaultUrl = 'https://www.indeed.com/career/software-engineer/companies';
+    var defaultUrl = 'https://www.indeed.com/career/software-engineer/companies/' + req.body.data;
     
     request(defaultUrl,
       (error, response, html) => {
