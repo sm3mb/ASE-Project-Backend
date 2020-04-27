@@ -12,7 +12,8 @@ export class CarrerComponent implements OnInit {
   carrerOpenings;
   topCompanies;
   topSalaries;
-
+  Values;
+  keeys;
   constructor(private carrerService: CarrerService) { }
 
   ngOnInit() {
@@ -24,8 +25,9 @@ export class CarrerComponent implements OnInit {
 
     this.carrerService.getTopCompanies().subscribe( res => {
       this.topCompanies = res;
-      console.log('This is Top companies data..@@@@@@@', this.topCompanies);
-    });
+      this.keeys = Object.keys(this.topCompanies);
+      this.Values = Object.values(this.topCompanies);
+  });
 
     this.carrerService.getTopSalaries().subscribe( res => {
       this.topSalaries = res;
