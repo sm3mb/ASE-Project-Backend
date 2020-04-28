@@ -47,6 +47,10 @@ export class DashboardComponent implements OnInit {
     this.loginService.loggedIn(this.isLoggedin);
   }
 
+  onClick(){
+    this.router.navigate(['dashboard']);
+  }
+
   findJobs() {
     // console.log('for value', this.jobsForm.value);
     this.jobsFormValue = this.jobsForm.value;
