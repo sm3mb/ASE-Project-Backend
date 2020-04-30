@@ -89,14 +89,14 @@ app.use("/jobs", jobsRouter);
 app.use("/carrer", statsRouter);
 
 app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
-  console.log("file request body@@@@@@@@@@@###########", req.body);
+  //console.log("file request body@@@@@@@@@@@###########", req.body);
   const file = req.file;
   // path.extname('index.html');
   // let filepath = fs.readFileSync(req.file.path);
   // console.log('@@@@@@@@@@@@ file path @@@@@@@@@@@@', path.extname(file.originalname));
   // // req.file.filename = req.file.filename + path.extname(file.originalname);
   // console.log('@@@@@@@@@@@@ file path @@@@@@@@@@@@', file);
-  console.log("session object#############", req.session);
+  //console.log("session object#############", req.session);
   if (!file) {
     const error = new Error("Please upload a file");
     error.httpStatusCode = 400;
@@ -143,7 +143,8 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
       ".net",
       "microsoft",
       "framework",
-      "Jenkins",
+      // "Jenkins",
+      // "R",
       "hadoop",
       "spark",
       "java",
@@ -151,7 +152,6 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
       "React",
       "php",
       "pl/sql",
-      "R",
       "Spark",
       "Software Engineer",
       "Blockchain",
@@ -208,6 +208,7 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
   });
 
   res.send("File Uploaded Successfully!");
+  //res.status(200).json(res);
   // var parseDocxPath = 'D:/Masters-UMKC/ASE/Project/Express/ASE_Project/back-end/uploads/' + file.filename;
   // // console.log('%%%%%%$$$$$$$$$$$$$$', parseDocxPath);
   // getJson(parseDocxPath);

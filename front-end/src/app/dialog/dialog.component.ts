@@ -16,6 +16,7 @@ export class DialogComponent implements OnInit {
   percentDone: number = 0;
   uploadSuccess;
   resumeData;
+  uploadMessage;
 
   constructor(private formBuilder: FormBuilder, private uploadService: UploadService, public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -41,10 +42,14 @@ export class DialogComponent implements OnInit {
 
     this.uploadService.uploadResume(formData).subscribe(res => { 
         this.resumeData = JSON.stringify(res);
-        console.log('response data........', this.resumeData);
+        //console.log('response data........', this.resumeData);
       },err => {
         this.resumeData = JSON.stringify(err);
-        console.log('error data........',err);
+        //console.log('error data........',err.status);
+        if(err.status == 200)
+          this.uploadMessage = "Resume Uploaded Successfully!";
+        else
+          this.uploadMessage = "Error in Uploading the Resume";
       });
 
     // this.http.post<any>('http://localhost:3000/uploadfile', formData).subscribe(

@@ -16,6 +16,13 @@ export class CarrerService {
      this.carrerSearchValue.next(data); 
    }
 
+   private carrerJobLink = new BehaviorSubject<any>('');
+   updatedcarrerJobLink = this.carrerJobLink.asObservable();
+   
+   updatecarrerJobLink(data){
+     this.carrerJobLink.next(data); 
+   }
+
 
   getCarrersData(value) { 
     let body = { data : value };

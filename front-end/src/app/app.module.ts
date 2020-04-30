@@ -14,14 +14,15 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { ngfModule, ngf } from "angular-file";
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CarrerComponent } from './carrer/carrer.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CarrerComponent } from './carrer/carrer.component';
     ngfModule,
     MatCardModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule, 
+    ChartsModule
   ],
   entryComponents: [DialogComponent, JobDescriptionComponent],
   providers: [
