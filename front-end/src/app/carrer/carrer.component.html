@@ -59,7 +59,7 @@
       <h3>Statistics for Software Engineers in {{searchValue}}</h3>
     </div>
     
-      <div *ngIf="showChart" style="display: block">
+      <div *ngIf="showChart && openings" style="display: block">
         <canvas baseChart
                 [datasets]="barChartData"
                 [labels]="barChartLabels"

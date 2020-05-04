@@ -63,13 +63,14 @@ export class CarrerComponent implements OnInit {
     this.barChartData = [
       { data: this.openings, label: 'Job Openings' }
     ];
+    console.log('data for charts@@@@@@@@@@@', this.barChartData);
     this.showChart = true;
   }
 
   getCarrersData() {
     this.carrerService.getCarrersData(this.searchValue).subscribe( res => {
       this.carrerOpenings = res;
-      //console.log('This is carrers data.......', res);
+      console.log('This is carrers data.......', res);
       //var matches = str.match(/(\d+)/); 
       this.openings = [];
       this.barChartLabels = [];
@@ -79,6 +80,11 @@ export class CarrerComponent implements OnInit {
         this.openings.push(item[0]);
         this.barChartLabels.push(element.jobTitle);
       });
+      this.barChartData = [
+        { data: this.openings, label: 'Job Openings' }
+      ];
+
+      this.shuffle();
       //console.log('This is openings data.......@@@@#######', this.openings);
     });
 
@@ -99,7 +105,7 @@ export class CarrerComponent implements OnInit {
         let item = element.salary.substring(1).replace(",", "");
         this.lineChartData[0].data.push(item);
       });
-      this.shuffle();
+      //this.shuffle();
     });
   }
 
