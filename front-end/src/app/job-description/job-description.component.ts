@@ -11,7 +11,7 @@ export class JobDescriptionComponent implements OnInit {
   jobData;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,private dialogRef: MatDialogRef<JobDescriptionComponent>) { 
-    console.log('dialog data.......',data);
+    //console.log('dialog data.......',data);
     if (data) {
       this.jobData = data ;
     }

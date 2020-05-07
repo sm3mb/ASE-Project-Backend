@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
-
-  constructor(private http: HttpClient) { }
+  serverUrl;
+  constructor(private http: HttpClient) {
+    this.serverUrl = environment.serverUrl;
+   }
 
   uploadResume(data) {
     //let userId = sessionStorage.getItem("res-session");
@@ -14,6 +17,6 @@ export class UploadService {
     //   userId : sessionStorage.getItem("res-session"),
     //   data : data
     // }
-    return this.http.post<any>('http://localhost:3000/uploadfile', data);
+    return this.http.post<any>(this.serverUrl + '/uploadfile', data);
   }
 }

@@ -63,13 +63,13 @@ export class DialogComponent implements OnInit {
   }
 
   uploadFiles(files: File) {
-    console.log('input file', files);
-    console.log('form data.....', this.myFormData);
+    //console.log('input file', files);
+    //console.log('form data.....', this.myFormData);
   }
 
   onNoClick(file): void {
     
-    console.log('file data..........', file);
+    //console.log('file data..........', file);
     this.dialogRef.close();
   }
 

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
@@ -6,8 +7,10 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class CarrerService {
-
-  constructor(private http: HttpClient) { }
+  serverUrl;
+  constructor(private http: HttpClient) { 
+    this.serverUrl = environment.serverUrl;
+  }
 
   private carrerSearchValue = new BehaviorSubject<any>('United States');
   updatedcarrerSearchValue = this.carrerSearchValue.asObservable();
@@ -26,17 +29,17 @@ export class CarrerService {
 
   getCarrersData(value) { 
     let body = { data : value };
-    return this.http.post('http://localhost:3000/carrer/stats', body);
+    return this.http.post(this.serverUrl + '/carrer/stats', body);
   }
 
   
   getTopCompanies(value) { 
     let body = { data : value };
-    return this.http.post('http://localhost:3000/carrer/topcompanies', body);
+    return this.http.post(this.serverUrl + '/carrer/topcompanies', body);
   }
 
   getTopSalaries(value) { 
     let body = { data : value };
-    return this.http.post('http://localhost:3000/carrer/topsalaries', body);
+    return this.http.post(this.serverUrl + '/carrer/topsalaries', body);
   }
 }

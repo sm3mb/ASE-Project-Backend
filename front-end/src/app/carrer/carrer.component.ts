@@ -63,14 +63,14 @@ export class CarrerComponent implements OnInit {
     this.barChartData = [
       { data: this.openings, label: 'Job Openings' }
     ];
-    console.log('data for charts@@@@@@@@@@@', this.barChartData);
+    //console.log('data for charts@@@@@@@@@@@', this.barChartData);
     this.showChart = true;
   }
 
   getCarrersData() {
     this.carrerService.getCarrersData(this.searchValue).subscribe( res => {
       this.carrerOpenings = res;
-      console.log('This is carrers data.......', res);
+      //console.log('This is carrers data.......', res);
       //var matches = str.match(/(\d+)/); 
       this.openings = [];
       this.barChartLabels = [];

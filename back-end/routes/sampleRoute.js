@@ -13,7 +13,7 @@ app.get('/test', async (req, res) => {
 });
 
 app.post('/check', async (req, res) => {
-    console.log('Hitting here.....', req.body);
+    //console.log('Hitting here.....', req.body);
     let user = {
         firstname: req.body.firstname,
         lastname: req.body.lastname

@@ -47,7 +47,7 @@ module.exports = {
                         var content = tags[1].replace(/<.*$/,"")
                         body += content+' '
                     }
-
+                    //console.log('data fro docx....####',body);
                     resolve(body)
                 })
             }

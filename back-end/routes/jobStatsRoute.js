@@ -123,7 +123,7 @@ router.post("/stats", async (req, res) => {
   // 
 
   router.post("/topcompanies", async (req, res) => {
-    console.log('job desc %%%%%%%%%%%%', req.body);
+    //console.log('job desc %%%%%%%%%%%%', req.body);
     
     var defaultUrl = 'https://www.indeed.com/career/software-engineer/companies/' + req.body.data;
     

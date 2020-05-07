@@ -31,15 +31,15 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     } else {
-      console.log('valid form value.....',this.loginForm.value);
+      //console.log('valid form value.....',this.loginForm.value);
       this.loginService.login(this.loginForm.value).subscribe( res => {
-        console.log('Success dashboard', res);
+        //console.log('Success dashboard', res);
         if(res) {
           sessionStorage.setItem('res-session', JSON.stringify(res));
           this.router.navigate(['dashboard']);
         }
       }, err => {
-        console.log('Invalid user credentials', err);
+        //console.log('Invalid user credentials', err);
         this.inValidUser = true;
         this.errorMessage = err.error.message;
       });

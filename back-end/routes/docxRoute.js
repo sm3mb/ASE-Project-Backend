@@ -16,7 +16,7 @@ function parseDocx(value) {
   easyDocx.parseDocx()
     .then(data => {
       // JSON data as result
-      console.log('JSON data2222222222!!!!!!!!', data);
+      //console.log('JSON data2222222222!!!!!!!!', data);
       res.send(data);
     })
     .catch(err => {
@@ -36,7 +36,7 @@ const easyDocx = new EasyDocx({
 easyDocx.parseDocx()
   .then(data => {
     // JSON data as result
-    console.log('JSON data2222222222!!!!!!!!', data);
+    //console.log('JSON data2222222222!!!!!!!!', data);
     res.send(data);
   })
   .catch(err => {

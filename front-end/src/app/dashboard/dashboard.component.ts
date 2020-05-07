@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
       location: ["", [Validators.required]]
     });
     this.check = sessionStorage.getItem("res-session");
-    console.log("check in nav bar.....", this.check);
+    //console.log("check in nav bar.....", this.check);
     this.loginService.loggedIn(this.isLoggedin);
   }
 
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
   }
 
   searchCarrer(value) {
-    console.log('Search value @@@@@@@@@@@@@ updatecarrerSearchValue', value);
+    //console.log('Search value @@@@@@@@@@@@@ updatecarrerSearchValue', value);
     this.carrerService.updatecarrerSearchValue(value);
   }
 

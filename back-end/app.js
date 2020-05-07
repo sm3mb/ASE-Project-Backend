@@ -37,7 +37,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public/dist/phase1/")));
 
 mongoose
   .connect(config.MongoUri, { useNewUrlParser: true })
@@ -46,7 +46,7 @@ mongoose
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    console.log("disk storage!!!!!!!!!!", req, file);
+    //console.log("disk storage!!!!!!!!!!", req, file);
     cb(null, "uploads");
   },
   filename: function(req, file, cb) {
@@ -122,7 +122,9 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
       "Java Script",
       "JS",
       "Mulesoft",
+      "Python",
       "python",
+      "Django",
       "dell boomi",
       "aws",
       "informatica",
@@ -146,6 +148,7 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
       // "Jenkins",
       // "R",
       "hadoop",
+      "flask",
       "spark",
       "java",
       "Big Data",
@@ -162,7 +165,7 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
 
     var resultWords = [];
     var splitwords = docxResult.split(" ");
-    // console.log('words.......', sp);
+    //console.log('words.......', splitwords);
     words.forEach(ele => {
       if (splitwords.includes(ele)) {
         resultWords.push(ele);
@@ -182,7 +185,7 @@ app.post("/uploadfile", upload.single("profile"), (req, res, next) => {
 
     resumeKeywords.save();
 
-    console.log("result words.........", req.session);
+    //console.log("result words.........", req.session);
 
     // var word = 'Angular';
     // function compare(elm, word) {

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     // }
 
     this.loginService.update.subscribe(res => this.isLoggedin = res);
-    console.log('adsasdsadasd', this.isLoggedin);
+    //console.log('adsasdsadasd', this.isLoggedin);
   }
 
 
